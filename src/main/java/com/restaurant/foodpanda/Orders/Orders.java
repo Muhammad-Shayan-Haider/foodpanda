@@ -1,8 +1,10 @@
 package com.restaurant.foodpanda.Orders;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.restaurant.foodpanda.Customer.Customer;
 import com.restaurant.foodpanda.Restaurant.Restaurant;
 import jakarta.persistence.*;
+import org.springframework.context.annotation.Lazy;
 
 import java.sql.Time;
 
@@ -16,12 +18,16 @@ public class Orders {
     private Time etaOfDelivery;
 
     @ManyToOne
+    @Lazy
+    @JsonIgnore
     private Customer customer;
 
     private String status;
     private String address;
 
     @ManyToOne
+    @Lazy
+    @JsonIgnore
     private Restaurant restaurant;
 
     private Double orderTotal;

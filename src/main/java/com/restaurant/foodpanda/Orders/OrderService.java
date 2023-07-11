@@ -32,8 +32,9 @@ public class OrderService {
     private RestaurantService restaurantService;
 
 
-    public Customer getCustomerById(Long id) {
-        return customerService.getCustomer(id).get();
+    public List<Orders> getOrdersAgainstCustomer(Long customerId) {
+        Customer customer = customerService.getCustomer(customerId).get();
+        return orderRepository.findByCustomer(customer);
     }
 
     public void createOrderRequest(OrderDetailsDTO orderDetailsDTO) {
