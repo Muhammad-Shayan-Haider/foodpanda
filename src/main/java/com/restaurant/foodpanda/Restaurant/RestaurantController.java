@@ -21,7 +21,7 @@ public class RestaurantController {
 
     @GetMapping("/{id}")
     public Restaurant getRestaurant(@PathVariable Long id) {
-        return restaurantService.getRestaurant(id).get();
+        return restaurantService.getRestaurantById(id).get();
     }
 
     @PostMapping
@@ -54,7 +54,7 @@ public class RestaurantController {
     public void addRestaurantMenu(@PathVariable Long restaurantId, @RequestBody RestaurantMenu restaurantMenu) {
 
         // find that the restaurantId is valid i.e. restaurant exists.
-        Optional<Restaurant> optionalRestaurant = restaurantService.getRestaurant(restaurantId);
+        Optional<Restaurant> optionalRestaurant = restaurantService.getRestaurantById(restaurantId);
 
         if (optionalRestaurant.isPresent()) {
             restaurantMenu.setRestaurant(optionalRestaurant.get());

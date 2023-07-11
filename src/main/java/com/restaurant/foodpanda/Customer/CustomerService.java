@@ -3,14 +3,16 @@ package com.restaurant.foodpanda.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class CustomerService {
 
     @Autowired
     private CustomerRepository customerRepository;
 
-    public Customer getCustomer(Long id) {
-        return customerRepository.findById(id).get();
+    public Optional<Customer> getCustomer(Long id) {
+        return customerRepository.findById(id);
     }
 
     public void addCustomer(Customer customer) {
